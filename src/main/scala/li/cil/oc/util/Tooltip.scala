@@ -23,7 +23,7 @@ object Tooltip {
     if (!Localization.canLocalize(Settings.namespace + "tooltip." + name)) return Seq.empty[String]
     val tooltip = Localization.localizeImmediately("tooltip." + name).
       format(args.map(_.toString): _*)
-    if (font == null) return tooltip.lines.toList // Some mods request tooltips before font renderer is available.
+    if (font == null) return tooltip.linesIterator.toList // Some mods request tooltips before font renderer is available.
     val isSubTooltip = name.contains(".")
     val shouldShorten = (isSubTooltip || font.width(tooltip) > maxWidth) && !KeyBindings.showExtendedTooltips
     if (shouldShorten) {
