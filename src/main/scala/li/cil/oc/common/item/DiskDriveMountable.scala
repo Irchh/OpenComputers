@@ -3,6 +3,7 @@ package li.cil.oc.common.item
 import li.cil.oc.OpenComputers
 import li.cil.oc.common.container.ContainerTypes
 import li.cil.oc.common.inventory.DiskDriveMountableInventory
+import li.cil.oc.common.item.abstracts.SimpleItem
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.ServerPlayerEntity
 import net.minecraft.item.Item
@@ -12,7 +13,7 @@ import net.minecraft.util.{ActionResult, ActionResultType, Hand}
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
-class DiskDriveMountable(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class DiskDriveMountable(props: Properties) extends SimpleItem(props) with IForgeItem {
   override def use(stack: ItemStack, world: World, player: PlayerEntity) = {
     if (!world.isClientSide) player match {
       case srvPlr: ServerPlayerEntity => ContainerTypes.openDiskDriveGui(srvPlr, new DiskDriveMountableInventory {

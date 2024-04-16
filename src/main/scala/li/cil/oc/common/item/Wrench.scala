@@ -2,6 +2,7 @@ package li.cil.oc.common.item
 
 import li.cil.oc.api
 import li.cil.oc.common.block.SimpleBlock
+import li.cil.oc.common.item.abstracts.SimpleItem
 import net.minecraft.block.Block
 import net.minecraft.block.Blocks
 import net.minecraft.entity.player.PlayerEntity
@@ -17,7 +18,7 @@ import net.minecraft.world.IWorldReader
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
-class Wrench(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem with api.internal.Wrench {
+class Wrench(props: Properties) extends SimpleItem(props) with IForgeItem with api.internal.Wrench {
   override def doesSneakBypassUse(stack: ItemStack, world: IWorldReader, pos: BlockPos, player: PlayerEntity): Boolean = true
 
   override def onItemUseFirst(stack: ItemStack, player: PlayerEntity, world: World, pos: BlockPos, side: Direction, hitX: Float, hitY: Float, hitZ: Float, hand: Hand): ActionResultType = {

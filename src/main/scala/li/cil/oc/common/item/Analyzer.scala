@@ -7,6 +7,7 @@ import li.cil.oc.api
 import li.cil.oc.api.machine.Machine
 import li.cil.oc.api.network.Analyzable
 import li.cil.oc.api.network._
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.tileentity
 import li.cil.oc.server.PacketSender
 import li.cil.oc.util.BlockPosition
@@ -25,6 +26,7 @@ import net.minecraftforge.common.util.FakePlayer
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
 
+import java.lang
 import scala.jdk.CollectionConverters.IterableHasAsJava
 
 object Analyzer {
@@ -106,7 +108,7 @@ object Analyzer {
   }
 }
 
-class Analyzer(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class Analyzer(props: Properties) extends SimpleItem(props) with IForgeItem {
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = {
     if (player.isCrouching && stack.hasTag) {
       stack.removeTagKey(Settings.namespace + "clipboard")
@@ -114,7 +116,7 @@ class Analyzer(props: Properties) extends Item(props) with IForgeItem with trait
     super.use(stack, world, player)
   }
 
-  override def onItemUse(stack: ItemStack, player: PlayerEntity, position: BlockPosition, side: Direction, hitX: Float, hitY: Float, hitZ: Float) = {
+  override def onItemUse(stack: ItemStack, player: PlayerEntity, position: BlockPosition, side: Direction, hitX: Float, hitY: Float, hitZ: Float): Boolean = {
     val world = player.level
     world.getBlockEntity(position) match {
       case screen: tileentity.Screen if side == screen.facing =>

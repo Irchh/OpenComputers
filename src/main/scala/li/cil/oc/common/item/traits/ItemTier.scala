@@ -1,8 +1,8 @@
 package li.cil.oc.common.item.traits
 
 import java.util
-
 import li.cil.oc.Localization
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.util.Tooltip
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.PlayerEntity

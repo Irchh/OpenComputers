@@ -28,6 +28,7 @@ import li.cil.oc.common.Tier
 import li.cil.oc.common.container
 import li.cil.oc.common.container.ContainerTypes
 import li.cil.oc.common.inventory.ComponentInventory
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.TabletData
 import li.cil.oc.integration.opencomputers.DriverScreen
 import li.cil.oc.server.{PacketSender, component}
@@ -44,7 +45,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.{PlayerEntity, PlayerInventory, ServerPlayerEntity}
 import net.minecraft.inventory.container.INamedContainerProvider
-import net.minecraft.item // Rarity
+import net.minecraft.item
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemGroup
@@ -77,7 +78,7 @@ import scala.collection.JavaConverters.asJavaIterable
 import scala.collection.convert.ImplicitConversionsToJava._
 import scala.collection.convert.ImplicitConversionsToScala._
 
-class Tablet(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem with CustomModel with traits.Chargeable {
+class Tablet(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with traits.Chargeable {
   final val TimeToAnalyze = 10
 
   // ----------------------------------------------------------------------- //

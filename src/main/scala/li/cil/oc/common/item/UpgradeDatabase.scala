@@ -4,6 +4,7 @@ import li.cil.oc.OpenComputers
 import li.cil.oc.Settings
 import li.cil.oc.common.container.ContainerTypes
 import li.cil.oc.common.inventory.DatabaseInventory
+import li.cil.oc.common.item.abstracts.SimpleItem
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.ServerPlayerEntity
 import net.minecraft.item.Item
@@ -15,13 +16,15 @@ import net.minecraft.util.Hand
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
-class UpgradeDatabase(props: Properties, val tier: Int) extends Item(props) with IForgeItem with traits.SimpleItem with traits.ItemTier {
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
+class UpgradeDatabase(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
   override protected def tooltipName = Option(unlocalizedName)
 
-  override protected def tooltipData = Seq(Settings.get.databaseEntriesPerTier(tier))
+  override protected def tooltipData = Seq(Settings.get.databaseEntriesPerTier(tier)).map(_.asInstanceOf[AnyRef]).asJava
 
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = {
     if (!player.isCrouching) {

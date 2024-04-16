@@ -1,8 +1,8 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import li.cil.oc.common.Tier
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.integration.opencomputers.ModOpenComputers
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
 import net.minecraftforge.common.extensions.IForgeItem
 
-class RedstoneCard(props: Properties, val tier: Int) extends Item(props) with IForgeItem with traits.SimpleItem with traits.ItemTier {
+class RedstoneCard(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

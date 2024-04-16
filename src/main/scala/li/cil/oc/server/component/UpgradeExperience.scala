@@ -15,7 +15,7 @@ import li.cil.oc.api.machine.Callback
 import li.cil.oc.api.machine.Context
 import li.cil.oc.api.network.Visibility
 import li.cil.oc.api.prefab.AbstractManagedEnvironment
-import li.cil.oc.util.{UpgradeExperience => ExperienceUtil}
+import li.cil.oc.util.{ExperienceUtil => ExperienceUtil}
 import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.entity.item.ExperienceOrbEntity
 import net.minecraft.item.Items

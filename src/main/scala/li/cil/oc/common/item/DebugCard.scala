@@ -1,9 +1,9 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import li.cil.oc.Settings
 import li.cil.oc.Settings.DebugCardAccess
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.DebugCardData
 import li.cil.oc.server.component.{DebugCard => CDebugCard}
 import net.minecraft.entity.player.PlayerEntity
@@ -19,7 +19,7 @@ import net.minecraft.util.text.StringTextComponent
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
-class DebugCard(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class DebugCard(props: Properties) extends SimpleItem(props) with IForgeItem {
   override protected def tooltipExtended(stack: ItemStack, tooltip: util.List[ITextComponent]): Unit = {
     super.tooltipExtended(stack, tooltip)
     val data = new DebugCardData(stack)

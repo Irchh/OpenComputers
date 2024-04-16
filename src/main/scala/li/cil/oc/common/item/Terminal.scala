@@ -1,7 +1,6 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import com.google.common.base.Strings
 import li.cil.oc.Constants
 import li.cil.oc.Localization
@@ -10,6 +9,7 @@ import li.cil.oc.Settings
 import li.cil.oc.api
 import li.cil.oc.client.gui
 import li.cil.oc.common.component
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.tileentity.traits.TileEntity
 import li.cil.oc.util.Tooltip
 import net.minecraft.client.Minecraft
@@ -31,7 +31,7 @@ import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.common.extensions.IForgeItem
 
-class Terminal(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem with CustomModel {
+class Terminal(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel {
   def hasServer(stack: ItemStack) = stack.hasTag && stack.getTag.contains(Settings.namespace + "server")
 
   @OnlyIn(Dist.CLIENT)

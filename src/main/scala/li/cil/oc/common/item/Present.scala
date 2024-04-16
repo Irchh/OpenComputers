@@ -1,10 +1,10 @@
 package li.cil.oc.common.item
 
 import java.util.Random
-
 import li.cil.oc.Constants
 import li.cil.oc.OpenComputers
 import li.cil.oc.api
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.util.InventoryUtils
 import li.cil.oc.util.ItemUtils
 import net.minecraft.entity.player.PlayerEntity
@@ -23,7 +23,7 @@ import net.minecraftforge.common.extensions.IForgeItem
 
 import scala.collection.mutable
 
-class Present(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class Present(props: Properties) extends SimpleItem(props) with IForgeItem {
   override def fillItemCategory(tab: ItemGroup, list: NonNullList[ItemStack]) {}
 
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = {

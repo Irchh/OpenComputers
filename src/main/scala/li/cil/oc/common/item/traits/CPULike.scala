@@ -1,10 +1,10 @@
 package li.cil.oc.common.item.traits
 
 import java.util
-
 import li.cil.oc.Settings
 import li.cil.oc.api
 import li.cil.oc.api.driver.item.MutableProcessor
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.integration.opencomputers.DriverCPU
 import li.cil.oc.util.Tooltip
 import net.minecraft.entity.player.PlayerEntity
@@ -19,12 +19,13 @@ import net.minecraft.util.text.TranslationTextComponent
 import net.minecraft.world.World
 
 import scala.collection.convert.ImplicitConversionsToScala._
+import scala.jdk.CollectionConverters.SeqHasAsJava
 import scala.language.existentials
 
 trait CPULike extends SimpleItem {
   def cpuTier: Int
 
-  override protected def tooltipData: Seq[Any] = Seq(Settings.get.cpuComponentSupport(cpuTier))
+  override protected def tooltipData = Seq(Settings.get.cpuComponentSupport(cpuTier)).map(_.asInstanceOf[AnyRef]).asJava
 
   override protected def tooltipExtended(stack: ItemStack, tooltip: util.List[ITextComponent]) {
     for (curr <- Tooltip.get("cpu.Architecture", api.Machine.getArchitectureName(DriverCPU.architecture(stack)))) {

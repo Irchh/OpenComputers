@@ -1,6 +1,7 @@
 package li.cil.oc.common.item
 
 import li.cil.oc.Settings
+import li.cil.oc.common.item.abstracts.SimpleItem
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -16,7 +17,7 @@ import net.minecraft.util.Hand
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
-class Chamelium(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class Chamelium(props: Properties) extends SimpleItem(props) with IForgeItem {
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = {
     if (Settings.get.chameliumEdible) {
       player.startUsingItem(if (player.getItemInHand(Hand.MAIN_HAND) == stack) Hand.MAIN_HAND else Hand.OFF_HAND)

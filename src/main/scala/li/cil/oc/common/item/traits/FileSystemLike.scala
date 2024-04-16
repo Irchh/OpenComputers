@@ -1,11 +1,11 @@
 package li.cil.oc.common.item.traits
 
 import java.util
-
 import li.cil.oc.Localization
 import li.cil.oc.OpenComputers
 import li.cil.oc.Settings
 import li.cil.oc.client.gui
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.DriveData
 import li.cil.oc.util.Tooltip
 import net.minecraft.client.Minecraft

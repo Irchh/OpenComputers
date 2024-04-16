@@ -1,11 +1,12 @@
 package li.cil.oc.common.item
 
+import li.cil.oc.common.item.abstracts.SimpleItem
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.extensions.IForgeItem
 
-class DroneCase(props: Properties, val tier: Int) extends Item(props) with IForgeItem with traits.SimpleItem with traits.ItemTier {
+class DroneCase(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem  with traits.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

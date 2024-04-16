@@ -2,6 +2,7 @@ package li.cil.oc.common.item
 
 import li.cil.oc.Constants
 import li.cil.oc.Settings
+import li.cil.oc.common.item.abstracts.SimpleItem
 import net.minecraft.client.renderer.model.ModelBakery
 import net.minecraft.client.renderer.model.ModelResourceLocation
 import net.minecraft.entity.player.PlayerEntity
@@ -17,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.common.extensions.IForgeItem
 
-class FloppyDisk(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem with CustomModel with traits.FileSystemLike {
+class FloppyDisk(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with traits.FileSystemLike {
   // Necessary for anonymous subclasses used for loot disks.
   unlocalizedName = "floppydisk"
 

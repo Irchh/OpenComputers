@@ -1,9 +1,9 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import li.cil.oc.OpenComputers
 import li.cil.oc.api
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.util.BlockPosition
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.PlayerEntity
@@ -21,7 +21,7 @@ import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.common.extensions.IForgeItem
 
-class Manual(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class Manual(props: Properties) extends SimpleItem(props) with IForgeItem {
   @OnlyIn(Dist.CLIENT)
   override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) {
     super.appendHoverText(stack, world, tooltip, flag)

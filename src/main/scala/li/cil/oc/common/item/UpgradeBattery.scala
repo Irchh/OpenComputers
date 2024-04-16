@@ -2,19 +2,22 @@ package li.cil.oc.common.item
 
 import li.cil.oc.Settings
 import li.cil.oc.api.driver.item.Chargeable
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.NodeData
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.extensions.IForgeItem
 
-class UpgradeBattery(props: Properties, val tier: Int) extends Item(props) with IForgeItem with traits.SimpleItem with traits.ItemTier with traits.Chargeable {
+import scala.jdk.CollectionConverters.SeqHasAsJava
+
+class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier with traits.Chargeable {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
   override protected def tooltipName = Option(unlocalizedName)
 
-  override protected def tooltipData = Seq(Settings.get.bufferCapacitorUpgrades(tier).toInt)
+  override protected def tooltipData = Seq(Settings.get.bufferCapacitorUpgrades(tier).toInt).map(_.asInstanceOf[AnyRef]).asJava
 
   override def showDurabilityBar(stack: ItemStack) = true
 

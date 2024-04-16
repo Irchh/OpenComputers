@@ -1,9 +1,9 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import com.google.common.base.Strings
 import li.cil.oc.api
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.NanomachineData
 import li.cil.oc.common.nanomachines.ControllerImpl
 import net.minecraft.client.util.ITooltipFlag
@@ -24,7 +24,7 @@ import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.common.extensions.IForgeItem
 
-class Nanomachines(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class Nanomachines(props: Properties) extends SimpleItem(props) with IForgeItem {
   @OnlyIn(Dist.CLIENT)
   override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) {
     super.appendHoverText(stack, world, tooltip, flag)

@@ -1,10 +1,10 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import li.cil.oc.Localization
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.util.Tooltip
-import li.cil.oc.util.{UpgradeExperience => ExperienceUtil}
+import li.cil.oc.util.ExperienceUtil
 import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
@@ -12,10 +12,11 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.text.ITextComponent
 import net.minecraft.util.text.StringTextComponent
 import net.minecraft.world.World
+import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.api.distmarker.{Dist, OnlyIn}
 import net.minecraftforge.common.extensions.IForgeItem
 
-class UpgradeExperience(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem with traits.ItemTier {
+class UpgradeExperience(props: Properties) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
   @OnlyIn(Dist.CLIENT)
   override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) {
     super.appendHoverText(stack, world, tooltip, flag)

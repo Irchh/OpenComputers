@@ -1,6 +1,7 @@
 package li.cil.oc.common.item
 
 import li.cil.oc.Settings
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.util.BlockPosition
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.Item
@@ -12,7 +13,7 @@ import net.minecraft.util.text.StringTextComponent
 import net.minecraft.world.IWorldReader
 import net.minecraftforge.common.extensions.IForgeItem
 
-class EEPROM(props: Properties) extends Item(props) with IForgeItem with traits.SimpleItem {
+class EEPROM(props: Properties) extends SimpleItem(props) with IForgeItem {
   override def getName(stack: ItemStack): ITextComponent = {
     if (stack.hasTag) {
       val tag = stack.getTag

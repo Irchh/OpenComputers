@@ -1,11 +1,11 @@
 package li.cil.oc.common.item
 
 import java.util
-
 import li.cil.oc.OpenComputers
 import li.cil.oc.client.KeyBindings
 import li.cil.oc.common.container.ContainerTypes
 import li.cil.oc.common.inventory.ServerInventory
+import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.util.Tooltip
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.ServerPlayerEntity
@@ -23,7 +23,7 @@ import net.minecraftforge.common.extensions.IForgeItem
 import scala.collection.mutable
 import scala.collection.convert.ImplicitConversionsToScala._
 
-class Server(props: Properties, val tier: Int) extends Item(props) with IForgeItem with traits.SimpleItem {
+class Server(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
