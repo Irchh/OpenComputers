@@ -8,7 +8,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.text.CharacterManager;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
-import scala.collection.convert.JavaCollectionWrappers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,18 +21,16 @@ public class Tooltip {
 
     public static Style DefaultStyle = Style.EMPTY.applyFormat(TextFormatting.GRAY);
 
-    public static List<String> get(String name, Object ...varargs) {
-        Object[] args = Arrays.stream(varargs).collect(Collectors.toList()).toArray();
-        // TODO: Temporary hack for interop with scala
-        if (args.length == 1 && args[0] instanceof JavaCollectionWrappers.SeqWrapper) {
-            args = ((JavaCollectionWrappers.SeqWrapper<Object>) args[0]).toArray();
-        }
-        if (!Localization.canLocalize(Settings.namespace + "tooltip." + name)) return new ArrayList<>();
+    public static List<String> get(String name, Object ...args) {
+        if (!Localization.canLocalize(Settings.namespace + "tooltip." + name))
+            return new ArrayList<>();
+
         String tooltip;
         try {
             tooltip = String.format(Localization.localizeImmediately("tooltip." + name), args);
         } catch (Exception e) {
-            System.err.println("Error localizing string: " + e);
+            System.err.println("Error localizing string, create an issue at https://github.com/Irchh/OpenComputers");
+            System.err.println("Error: " + e);
             tooltip = Localization.localizeImmediately("tooltip." + name);
         }
         if (font == null) return Arrays.asList(tooltip.split("\\r?\\n"));
