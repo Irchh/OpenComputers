@@ -58,7 +58,7 @@ class FloppyDisk(props: Properties) extends SimpleItem(props) with IForgeItem wi
   @OnlyIn(Dist.CLIENT)
   override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) = {
     super.appendHoverText(stack, world, tooltip, flag)
-    fsAppendHoverText(stack, tooltip, flag)
+    this.fsAppendHoverText(stack, tooltip, flag)
   }
 
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = fsUse(stack, world, player)

@@ -106,21 +106,4 @@ public abstract class SimpleItem extends Item implements ISimpleItem {
     public ActionResult<ItemStack> use(ItemStack stack, World world, PlayerEntity player) {
         return new ActionResult<>(ActionResultType.PASS, stack);
     }
-
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (tooltipName().isDefined()) {
-            for (String curr: Tooltip.get(tooltipName().get(), tooltipData().toArray(new Object[0]))) {
-                tooltip.add(new StringTextComponent(curr).setStyle(Tooltip.DefaultStyle));
-            }
-            tooltipExtended(stack, tooltip);
-        }
-        else {
-            for (String curr: Tooltip.get(getClass().getSimpleName().toLowerCase())) {
-                tooltip.add(new StringTextComponent(curr).setStyle(Tooltip.DefaultStyle));
-            }
-        }
-        tooltipCosts(stack, tooltip);
-    }
 }

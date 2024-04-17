@@ -54,7 +54,20 @@ public interface ISimpleItem extends IItemProvider, UpgradeRenderer {
     }
 
     @OnlyIn(Dist.CLIENT)
-    void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag);
+    default void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        if (tooltipName().isDefined()) {
+            for (String curr: Tooltip.get(tooltipName().get(), tooltipData().toArray(new Object[0]))) {
+                tooltip.add(new StringTextComponent(curr).setStyle(Tooltip.DefaultStyle));
+            }
+            tooltipExtended(stack, tooltip);
+        }
+        else {
+            for (String curr: Tooltip.get(getClass().getSimpleName().toLowerCase())) {
+                tooltip.add(new StringTextComponent(curr).setStyle(Tooltip.DefaultStyle));
+            }
+        }
+        tooltipCosts(stack, tooltip);
+    }
 
     // For stuff that goes to the normal 'extended' tooltip, before the costs.
     default void tooltipExtended(ItemStack stack, List<ITextComponent> tooltip) {}
