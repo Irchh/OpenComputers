@@ -8,12 +8,17 @@ import li.cil.oc.api.driver.item.UpgradeRenderer;
 import li.cil.oc.api.event.RobotRenderEvent;
 import li.cil.oc.api.internal.Robot;
 import li.cil.oc.client.renderer.item.UpgradeRenderer$;
+import li.cil.oc.util.Tooltip;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import scala.Option;
 
 import java.util.ArrayList;
@@ -47,6 +52,9 @@ public interface ISimpleItem extends IItemProvider, UpgradeRenderer {
     default List<Object> tooltipData() {
         return new ArrayList<>();
     }
+
+    @OnlyIn(Dist.CLIENT)
+    void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag);
 
     // For stuff that goes to the normal 'extended' tooltip, before the costs.
     default void tooltipExtended(ItemStack stack, List<ITextComponent> tooltip) {}
