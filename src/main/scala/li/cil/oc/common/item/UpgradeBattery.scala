@@ -1,9 +1,9 @@
 package li.cil.oc.common.item
 
 import li.cil.oc.Settings
-import li.cil.oc.api.driver.item.Chargeable
 import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.NodeData
+import li.cil.oc.common.item.traits.Chargeable
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemStack
@@ -11,7 +11,7 @@ import net.minecraftforge.common.extensions.IForgeItem
 
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier with traits.Chargeable {
+class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier with Chargeable {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

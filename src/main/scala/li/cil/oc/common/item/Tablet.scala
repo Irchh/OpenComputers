@@ -30,6 +30,7 @@ import li.cil.oc.common.container.ContainerTypes
 import li.cil.oc.common.inventory.ComponentInventory
 import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.TabletData
+import li.cil.oc.common.item.traits.Chargeable
 import li.cil.oc.integration.opencomputers.DriverScreen
 import li.cil.oc.server.{PacketSender, component}
 import li.cil.oc.util.Audio
@@ -78,7 +79,7 @@ import scala.collection.JavaConverters.asJavaIterable
 import scala.collection.convert.ImplicitConversionsToJava._
 import scala.collection.convert.ImplicitConversionsToScala._
 
-class Tablet(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with traits.Chargeable {
+class Tablet(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with Chargeable {
   final val TimeToAnalyze = 10
 
   // ----------------------------------------------------------------------- //
