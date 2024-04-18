@@ -1,6 +1,6 @@
 package li.cil.oc.common.item.abstracts;
 
-import li.cil.oc.common.item.traits.ISimpleItem;
+import li.cil.oc.common.item.interfaces.ISimpleItem;
 import li.cil.oc.common.tileentity.DiskDrive;
 import li.cil.oc.util.BlockPosition;
 import net.minecraft.entity.player.PlayerEntity;

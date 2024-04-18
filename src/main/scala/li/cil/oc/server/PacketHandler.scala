@@ -15,7 +15,7 @@ import li.cil.oc.common.entity.Drone
 import li.cil.oc.common.entity.DroneInventory
 import li.cil.oc.common.item.{Tablet, TabletWrapper}
 import li.cil.oc.common.item.data.DriveData
-import li.cil.oc.common.item.traits.FileSystemLike
+import li.cil.oc.common.item.interfaces.FileSystemLike
 import li.cil.oc.common.tileentity._
 import li.cil.oc.common.tileentity.traits.Computer
 import li.cil.oc.common.{PacketHandler => CommonPacketHandler}

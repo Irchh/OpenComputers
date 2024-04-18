@@ -1,4 +1,4 @@
-package li.cil.oc.common.item.traits;
+package li.cil.oc.common.item.interfaces;
 
 import li.cil.oc.Settings;
 import li.cil.oc.util.PackedColor;

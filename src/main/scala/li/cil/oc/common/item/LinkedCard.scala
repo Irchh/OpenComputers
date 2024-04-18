@@ -18,7 +18,7 @@ import net.minecraftforge.common.extensions.IForgeItem
 
 import scala.collection.convert.ImplicitConversionsToScala._
 
-class LinkedCard(props: Properties) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
+class LinkedCard(props: Properties) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   @OnlyIn(Dist.CLIENT)
   override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) {
     super.appendHoverText(stack, world, tooltip, flag)

@@ -20,7 +20,7 @@ import net.minecraft.util.text.StringTextComponent
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
-class UpgradeMF(props: Properties) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
+class UpgradeMF(props: Properties) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   override def onItemUseFirst(stack: ItemStack, player: PlayerEntity, world: World, pos: BlockPos, side: Direction, hitX: Float, hitY: Float, hitZ: Float, hand: Hand): ActionResultType = {
     if (!player.level.isClientSide && player.isCrouching) {
       val data = stack.getOrCreateTag

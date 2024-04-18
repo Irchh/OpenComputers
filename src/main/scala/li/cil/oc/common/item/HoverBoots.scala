@@ -5,7 +5,7 @@ import li.cil.oc.client.renderer.item.HoverBootRenderer
 import li.cil.oc.common.init.Items
 import li.cil.oc.common.item.abstracts.SimpleArmorItem
 import li.cil.oc.common.item.data.HoverBootsData
-import li.cil.oc.common.item.traits.Chargeable
+import li.cil.oc.common.item.interfaces.Chargeable
 import li.cil.oc.util.ItemColorizer
 import net.minecraft.block.Blocks
 import net.minecraft.block.CauldronBlock
@@ -47,7 +47,7 @@ class HoverBoots(props: Properties) extends SimpleArmorItem(ArmorMaterial.DIAMON
 
   override def charge(stack: ItemStack, amount: Double, simulate: Boolean): Double = {
     val data = new HoverBootsData(stack)
-    traits.Chargeable.applyCharge(amount, data.charge, Settings.get.bufferHoverBoots, used => if (!simulate) {
+    interfaces.Chargeable.applyCharge(amount, data.charge, Settings.get.bufferHoverBoots, used => if (!simulate) {
       data.charge += used
       data.saveData(stack)
     })

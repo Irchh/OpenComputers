@@ -30,7 +30,7 @@ import li.cil.oc.common.container.ContainerTypes
 import li.cil.oc.common.inventory.ComponentInventory
 import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.TabletData
-import li.cil.oc.common.item.traits.Chargeable
+import li.cil.oc.common.item.interfaces.Chargeable
 import li.cil.oc.integration.opencomputers.DriverScreen
 import li.cil.oc.server.{PacketSender, component}
 import li.cil.oc.util.Audio
@@ -149,7 +149,7 @@ class Tablet(props: Properties) extends SimpleItem(props) with IForgeItem with C
   def charge(stack: ItemStack, amount: Double, simulate: Boolean): Double = {
     if (amount < 0) return amount
     val data = new TabletData(stack)
-    traits.Chargeable.applyCharge(amount, data.energy, data.maxEnergy, used => if (!simulate) {
+    interfaces.Chargeable.applyCharge(amount, data.energy, data.maxEnergy, used => if (!simulate) {
       data.energy += used
       data.saveData(stack)
     })

@@ -8,7 +8,7 @@ import net.minecraftforge.common.extensions.IForgeItem
 
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-class UpgradeHover(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
+class UpgradeHover(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

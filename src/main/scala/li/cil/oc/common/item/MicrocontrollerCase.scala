@@ -6,7 +6,7 @@ import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.extensions.IForgeItem
 
-class MicrocontrollerCase(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
+class MicrocontrollerCase(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

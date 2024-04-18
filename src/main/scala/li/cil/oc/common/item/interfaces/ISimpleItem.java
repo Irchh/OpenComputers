@@ -1,4 +1,4 @@
-package li.cil.oc.common.item.traits;
+package li.cil.oc.common.item.interfaces;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import li.cil.oc.Settings;

@@ -19,7 +19,7 @@ import net.minecraft.world.World
 import net.minecraftforge.api.distmarker.{Dist, OnlyIn}
 import net.minecraftforge.common.extensions.IForgeItem
 
-class HardDiskDrive(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier with traits.FileSystemLike {
+class HardDiskDrive(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier with interfaces.FileSystemLike {
   override protected def tooltipName = None
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier

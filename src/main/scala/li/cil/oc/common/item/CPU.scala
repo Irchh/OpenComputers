@@ -13,7 +13,7 @@ import net.minecraft.world.World
 
 import scala.language.existentials
 
-class CPU(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier with traits.CPULike {
+class CPU(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier with interfaces.CPULike {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

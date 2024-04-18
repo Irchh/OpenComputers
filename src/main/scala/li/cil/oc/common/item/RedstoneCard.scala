@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
 import net.minecraftforge.common.extensions.IForgeItem
 
-class RedstoneCard(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier {
+class RedstoneCard(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 

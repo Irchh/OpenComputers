@@ -22,8 +22,8 @@ import li.cil.oc.common.component.TerminalServer
 import li.cil.oc.common.item.data.MicrocontrollerData
 import li.cil.oc.common.item.data.RobotData
 import li.cil.oc.common.item.data.TabletData
-import li.cil.oc.common.item.traits
-import li.cil.oc.common.item.traits.Chargeable
+import li.cil.oc.common.item.interfaces
+import li.cil.oc.common.item.interfaces.Chargeable
 import li.cil.oc.common.tileentity.Robot
 import li.cil.oc.common.tileentity.traits.power
 import li.cil.oc.integration.Mods
@@ -137,12 +137,12 @@ object EventHandler {
 
   @SubscribeEvent
   def onAttachCapabilitiesItemStack(event: AttachCapabilitiesEvent[ItemStack]): Unit = {
-    if (!event.getCapabilities.containsKey(traits.Chargeable.KEY)) {
+    if (!event.getCapabilities.containsKey(interfaces.Chargeable.KEY)) {
       event.getObject match {
         case stack: ItemStack => stack.getItem match {
           case chargeable: Chargeable => {
             val provider = new Chargeable.Provider(stack, chargeable)
-            event.addCapability(traits.Chargeable.KEY, provider)
+            event.addCapability(interfaces.Chargeable.KEY, provider)
             event.addListener(new Runnable {
               override def run = provider.invalidate
             })

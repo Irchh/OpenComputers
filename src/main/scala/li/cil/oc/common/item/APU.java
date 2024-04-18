@@ -2,9 +2,9 @@ package li.cil.oc.common.item;
 
 import li.cil.oc.common.Tier;
 import li.cil.oc.common.item.abstracts.SimpleItem;
-import li.cil.oc.common.item.traits.CPULike;
-import li.cil.oc.common.item.traits.GPULike;
-import li.cil.oc.common.item.traits.ItemTier;
+import li.cil.oc.common.item.interfaces.CPULike;
+import li.cil.oc.common.item.interfaces.GPULike;
+import li.cil.oc.common.item.interfaces.ItemTier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;

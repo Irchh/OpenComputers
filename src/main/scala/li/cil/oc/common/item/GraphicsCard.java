@@ -1,8 +1,8 @@
 package li.cil.oc.common.item;
 
 import li.cil.oc.common.item.abstracts.SimpleItem;
-import li.cil.oc.common.item.traits.GPULike;
-import li.cil.oc.common.item.traits.ItemTier;
+import li.cil.oc.common.item.interfaces.GPULike;
+import li.cil.oc.common.item.interfaces.ItemTier;
 import net.minecraftforge.common.extensions.IForgeItem;
 import scala.Option;
 

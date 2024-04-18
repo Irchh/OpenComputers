@@ -18,7 +18,7 @@ import li.cil.oc.common.item.data.HoverBootsData
 import li.cil.oc.common.item.data.MicrocontrollerData
 import li.cil.oc.common.item.data.RobotData
 import li.cil.oc.common.item.data.TabletData
-import li.cil.oc.common.item.traits.ISimpleItem
+import li.cil.oc.common.item.interfaces.ISimpleItem
 import li.cil.oc.server.machine.luac.LuaStateFactory
 import net.minecraft.block.Block
 import net.minecraft.item.BlockItem

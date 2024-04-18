@@ -5,4 +5,4 @@ import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraftforge.common.extensions.IForgeItem
 
-class UpgradeTractorBeam(props: Properties) extends SimpleItem(props) with IForgeItem with traits.ItemTier
+class UpgradeTractorBeam(props: Properties) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier

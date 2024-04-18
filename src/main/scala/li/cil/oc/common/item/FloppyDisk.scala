@@ -22,7 +22,7 @@ import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.common.extensions.IForgeItem
 
-class FloppyDisk(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with traits.FileSystemLike {
+class FloppyDisk(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with interfaces.FileSystemLike {
 
   override protected def tooltipName = None
   // Necessary for anonymous subclasses used for loot disks.

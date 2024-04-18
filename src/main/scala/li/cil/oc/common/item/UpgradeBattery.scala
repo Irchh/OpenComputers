@@ -3,7 +3,7 @@ package li.cil.oc.common.item
 import li.cil.oc.Settings
 import li.cil.oc.common.item.abstracts.SimpleItem
 import li.cil.oc.common.item.data.NodeData
-import li.cil.oc.common.item.traits.Chargeable
+import li.cil.oc.common.item.interfaces.Chargeable
 import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemStack
@@ -11,7 +11,7 @@ import net.minecraftforge.common.extensions.IForgeItem
 
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
-class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with traits.ItemTier with Chargeable {
+class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier with Chargeable {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
@@ -36,7 +36,7 @@ class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props)
       case Some(value) => value
       case _ => 0.0
     }
-    traits.Chargeable.applyCharge(amount, buffer, Settings.get.bufferCapacitorUpgrades(tier), used => if (!simulate) {
+    interfaces.Chargeable.applyCharge(amount, buffer, Settings.get.bufferCapacitorUpgrades(tier), used => if (!simulate) {
       data.buffer = Option(buffer + used)
       data.saveData(stack)
     })

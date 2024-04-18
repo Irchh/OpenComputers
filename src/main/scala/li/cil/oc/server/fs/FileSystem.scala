@@ -11,7 +11,7 @@ import li.cil.oc.Settings
 import li.cil.oc.api
 import li.cil.oc.api.fs.Label
 import li.cil.oc.api.network.EnvironmentHost
-import li.cil.oc.common.item.traits.FileSystemLike
+import li.cil.oc.common.item.interfaces.FileSystemLike
 import li.cil.oc.server.component
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.CompoundNBT
