@@ -95,7 +95,7 @@ object ModOpenComputers extends ModProxy {
     MinecraftForge.EVENT_BUS.register(EventHandler)
     MinecraftForge.EVENT_BUS.register(NanomachinesHandler.Common)
     MinecraftForge.EVENT_BUS.register(Tablet)
-    MinecraftForge.EVENT_BUS.register(Analyzer)
+    MinecraftForge.EVENT_BUS.register(classOf[Analyzer])
     MinecraftForge.EVENT_BUS.register(AngelUpgradeHandler)
     MinecraftForge.EVENT_BUS.register(ChunkloaderUpgradeHandler)
     MinecraftForge.EVENT_BUS.register(ExperienceUpgradeHandler)
