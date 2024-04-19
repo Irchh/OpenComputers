@@ -1,8 +1,12 @@
 package li.cil.oc.common.item.abstracts;
 
+import li.cil.oc.common.item.interfaces.FileSystemLike;
 import li.cil.oc.common.item.interfaces.ISimpleItem;
+import li.cil.oc.common.item.interfaces.ItemTier;
 import li.cil.oc.common.tileentity.DiskDrive;
 import li.cil.oc.util.BlockPosition;
+import li.cil.oc.util.Tooltip;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,8 +18,13 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public abstract class SimpleItem extends Item implements ISimpleItem {
     public SimpleItem(Properties props) {
@@ -25,9 +34,15 @@ public abstract class SimpleItem extends Item implements ISimpleItem {
     @Deprecated
     protected String unlocalizedName = getClass().getSimpleName().toLowerCase();
 
+    @Deprecated
     @Override
     public String getUnlocalizedName() {
         return unlocalizedName;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag)  {
+        ISimpleItem.super.appendHoverText(stack, world, tooltip, flag);
     }
 
     @Override

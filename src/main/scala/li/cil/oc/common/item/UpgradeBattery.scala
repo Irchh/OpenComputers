@@ -9,13 +9,14 @@ import net.minecraft.item.Item.Properties
 import net.minecraft.item.ItemStack
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
 class UpgradeBattery(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier with Chargeable {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
-  override protected def tooltipName = Option(unlocalizedName)
+  override protected def tooltipName = Optional.of(unlocalizedName)
 
   override protected def tooltipData = Seq(Settings.get.bufferCapacitorUpgrades(tier).toInt).map(_.asInstanceOf[AnyRef]).asJava
 

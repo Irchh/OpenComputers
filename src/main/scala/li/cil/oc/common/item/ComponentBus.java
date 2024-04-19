@@ -1,17 +1,19 @@
 package li.cil.oc.common.item;
 
+import li.cil.oc.Settings;
 import li.cil.oc.common.item.abstracts.SimpleItem;
-import li.cil.oc.common.item.interfaces.GPULike;
 import li.cil.oc.common.item.interfaces.ItemTier;
 import net.minecraftforge.common.extensions.IForgeItem;
 import scala.Option;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class GraphicsCard extends SimpleItem implements IForgeItem, ItemTier, GPULike {
-    private final int tier;
-    public GraphicsCard(Properties props, int tier) {
+public class ComponentBus extends SimpleItem implements IForgeItem, ItemTier {
+    public final int tier;
+
+    public ComponentBus(Properties props, int tier) {
         super(props);
         this.tier = tier;
     }
@@ -22,17 +24,12 @@ public class GraphicsCard extends SimpleItem implements IForgeItem, ItemTier, GP
     }
 
     @Override
-    public int gpuTier() {
-        return tier;
-    }
-
-    @Override
     public Optional<String> tooltipName() {
         return Optional.of(unlocalizedName);
     }
 
     @Override
     public List<Object> tooltipData() {
-        return gpuTooltipData();
+        return Collections.singletonList(Settings.get().cpuComponentSupport[tier]);
     }
 }

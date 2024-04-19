@@ -22,9 +22,11 @@ import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraftforge.client.model.ModelLoader
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
+
 class FloppyDisk(props: Properties) extends SimpleItem(props) with IForgeItem with CustomModel with interfaces.FileSystemLike {
 
-  override protected def tooltipName = None
+  override protected def tooltipName = Optional.empty()
   // Necessary for anonymous subclasses used for loot disks.
   unlocalizedName = "floppydisk"
 
@@ -54,12 +56,6 @@ class FloppyDisk(props: Properties) extends SimpleItem(props) with IForgeItem wi
   }
 
   override def doesSneakBypassUse(stack: ItemStack, world: IWorldReader, pos: BlockPos, player: PlayerEntity): Boolean = true
-
-  @OnlyIn(Dist.CLIENT)
-  override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) = {
-    super.appendHoverText(stack, world, tooltip, flag)
-    this.fsAppendHoverText(stack, tooltip, flag)
-  }
 
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = fsUse(stack, world, player)
 }

@@ -1,8 +1,12 @@
 package li.cil.oc.common.item.abstracts;
 
+import li.cil.oc.common.item.interfaces.FileSystemLike;
 import li.cil.oc.common.item.interfaces.ISimpleItem;
+import li.cil.oc.common.item.interfaces.ItemTier;
 import li.cil.oc.common.tileentity.DiskDrive;
 import li.cil.oc.util.BlockPosition;
+import li.cil.oc.util.Tooltip;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -13,8 +17,12 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public abstract class SimpleArmorItem extends ArmorItem implements ISimpleItem {
     public SimpleArmorItem(IArmorMaterial p_i48534_1_, EquipmentSlotType p_i48534_2_, Properties p_i48534_3_) {
@@ -27,6 +35,11 @@ public abstract class SimpleArmorItem extends ArmorItem implements ISimpleItem {
     @Override
     public String getUnlocalizedName() {
         return unlocalizedName;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag)  {
+        ISimpleItem.super.appendHoverText(stack, world, tooltip, flag);
     }
 
     @Override

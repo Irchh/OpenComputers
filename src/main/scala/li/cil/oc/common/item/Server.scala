@@ -20,6 +20,7 @@ import net.minecraft.util.text.StringTextComponent
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
 import scala.collection.mutable
 import scala.collection.convert.ImplicitConversionsToScala._
 
@@ -27,7 +28,7 @@ class Server(props: Properties, val tier: Int) extends SimpleItem(props) with IF
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
-  override protected def tooltipName = Option(unlocalizedName)
+  override protected def tooltipName = Optional.of(unlocalizedName)
 
   private object HelperInventory extends ServerInventory {
     var container = ItemStack.EMPTY

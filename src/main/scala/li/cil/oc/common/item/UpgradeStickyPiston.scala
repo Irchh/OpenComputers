@@ -5,7 +5,9 @@ import net.minecraft.item.Item
 import net.minecraft.item.Item.Properties
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
+
 class UpgradeStickyPiston(props: Properties) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
-  override protected def tooltipName: Option[String] = Option(unlocalizedName)
+  override protected def tooltipName: Optional[String] = Optional.of(unlocalizedName)
 }
 

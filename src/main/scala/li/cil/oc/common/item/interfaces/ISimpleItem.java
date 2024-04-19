@@ -19,10 +19,10 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import scala.Option;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public interface ISimpleItem extends IItemProvider, UpgradeRenderer {
@@ -45,8 +45,8 @@ public interface ISimpleItem extends IItemProvider, UpgradeRenderer {
 
     String getUnlocalizedName();
 
-    default Option<String> tooltipName() {
-        return Option.apply(getUnlocalizedName());
+    default Optional<String> tooltipName() {
+        return Optional.of(getUnlocalizedName());
     };
 
     default List<Object> tooltipData() {
@@ -55,7 +55,7 @@ public interface ISimpleItem extends IItemProvider, UpgradeRenderer {
 
     @OnlyIn(Dist.CLIENT)
     default void appendHoverText(ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
-        if (tooltipName().isDefined()) {
+        if (tooltipName().isPresent()) {
             for (String curr: Tooltip.get(tooltipName().get(), tooltipData().toArray(new Object[0]))) {
                 tooltip.add(new StringTextComponent(curr).setStyle(Tooltip.DefaultStyle));
             }
@@ -67,6 +67,10 @@ public interface ISimpleItem extends IItemProvider, UpgradeRenderer {
             }
         }
         tooltipCosts(stack, tooltip);
+        if (this instanceof ItemTier)
+            ((ItemTier) this).itemTierAppendHoverText(stack, tooltip, flag);
+        if (this instanceof FileSystemLike)
+            ((FileSystemLike) this).fsAppendHoverText(stack, tooltip, flag);
     }
 
     // For stuff that goes to the normal 'extended' tooltip, before the costs.

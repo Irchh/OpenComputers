@@ -16,13 +16,14 @@ import net.minecraft.util.Hand
 import net.minecraft.world.World
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
 import scala.jdk.CollectionConverters.SeqHasAsJava
 
 class UpgradeDatabase(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
-  override protected def tooltipName = Option(unlocalizedName)
+  override protected def tooltipName = Optional.of(unlocalizedName)
 
   override protected def tooltipData = Seq(Settings.get.databaseEntriesPerTier(tier)).map(_.asInstanceOf[AnyRef]).asJava
 

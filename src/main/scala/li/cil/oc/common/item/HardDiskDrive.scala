@@ -19,8 +19,10 @@ import net.minecraft.world.World
 import net.minecraftforge.api.distmarker.{Dist, OnlyIn}
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
+
 class HardDiskDrive(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier with interfaces.FileSystemLike {
-  override protected def tooltipName = None
+  override protected def tooltipName = Optional.empty()
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
@@ -36,12 +38,6 @@ class HardDiskDrive(props: Properties, val tier: Int) extends SimpleItem(props) 
       localizedName.append(s" (${kiloBytes}KB)")
     }
     localizedName
-  }
-
-  @OnlyIn(Dist.CLIENT)
-  override def appendHoverText(stack: ItemStack, world: World, tooltip: util.List[ITextComponent], flag: ITooltipFlag) = {
-    super.appendHoverText(stack, world, tooltip, flag)
-    this.fsAppendHoverText(stack, tooltip, flag)
   }
 
   override def use(stack: ItemStack, world: World, player: PlayerEntity): ActionResult[ItemStack] = fsUse(stack, world, player)

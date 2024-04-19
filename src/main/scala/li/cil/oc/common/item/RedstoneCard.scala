@@ -11,11 +11,13 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.NonNullList
 import net.minecraftforge.common.extensions.IForgeItem
 
+import java.util.Optional
+
 class RedstoneCard(props: Properties, val tier: Int) extends SimpleItem(props) with IForgeItem with interfaces.ItemTier {
   @Deprecated
   override def getDescriptionId = super.getDescriptionId + tier
 
-  override protected def tooltipName = Option(unlocalizedName)
+  override protected def tooltipName = Optional.of(unlocalizedName)
 
   override def fillItemCategory(tab: ItemGroup, list: NonNullList[ItemStack]) {
     if (tier == Tier.One || ModOpenComputers.hasRedstoneCardT2) super.fillItemCategory(tab, list)
