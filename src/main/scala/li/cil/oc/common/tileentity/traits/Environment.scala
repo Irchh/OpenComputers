@@ -75,7 +75,7 @@ trait Environment extends TileEntity with network.Environment with network.Envir
   }
 
   // ----------------------------------------------------------------------- //
-
+  // network.Node
   override def onMessage(message: network.Message) {}
 
   override def onConnect(node: network.Node) {}

@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ObjectHolder;
 public final class TileEntityTypes {
     public static final TileEntityType<Adapter> ADAPTER = null;
     public static final TileEntityType<Assembler> ASSEMBLER = null;
-    public static final TileEntityType<Cable> CABLE = null;
+    public static final TileEntityType<li.cil.oc.common.tileentity.javaport.Cable> CABLE = null;
     public static final TileEntityType<Capacitor> CAPACITOR = null;
     public static final TileEntityType<CarpetedCapacitor> CARPETED_CAPACITOR = null;
     public static final TileEntityType<Case> CASE = null;
@@ -48,7 +48,7 @@ public final class TileEntityTypes {
             Items.get(Constants.BlockName.Adapter).block()));
         register(e.getRegistry(), "assembler", TileEntityType.Builder.of(() -> new Assembler(ASSEMBLER),
             Items.get(Constants.BlockName.Assembler).block()));
-        register(e.getRegistry(), "cable", TileEntityType.Builder.of(() -> new Cable(CABLE),
+        register(e.getRegistry(), "cable", TileEntityType.Builder.of(() -> new li.cil.oc.common.tileentity.javaport.Cable(CABLE),
             Items.get(Constants.BlockName.Cable).block()));
         register(e.getRegistry(), "capacitor", TileEntityType.Builder.of(() -> new Capacitor(CAPACITOR),
             Items.get(Constants.BlockName.Capacitor).block()));

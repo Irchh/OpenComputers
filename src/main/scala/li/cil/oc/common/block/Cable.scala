@@ -65,7 +65,7 @@ class Cable(props: Properties) extends SimpleBlock(props) with IForgeBlock {
 
   override def getPickBlock(state: BlockState, target: RayTraceResult, world: IBlockReader, pos: BlockPos, player: PlayerEntity) =
     world.getBlockEntity(pos) match {
-      case t: tileentity.Cable => t.createItemStack()
+      case t: tileentity.javaport.Cable => t.createItemStack()
       case _ => createItemStack()
     }
 
@@ -74,7 +74,7 @@ class Cable(props: Properties) extends SimpleBlock(props) with IForgeBlock {
   override def neighborChanged(state: BlockState, world: World, pos: BlockPos, other: Block, otherPos: BlockPos, moved: Boolean): Unit = {
     if (world.isClientSide) return
     val newState = world.getBlockEntity(pos) match {
-      case t: tileentity.Cable => {
+      case t: tileentity.javaport.Cable => {
         val fromPos = new BlockPos.Mutable()
         Direction.values.foldLeft(state)((state, fromSide) => {
           fromPos.setWithOffset(pos, fromSide)
@@ -92,14 +92,14 @@ class Cable(props: Properties) extends SimpleBlock(props) with IForgeBlock {
 
   // ----------------------------------------------------------------------- //
 
-  override def newBlockEntity(world: IBlockReader) = new tileentity.Cable(tileentity.TileEntityTypes.CABLE)
+  override def newBlockEntity(world: IBlockReader) = new tileentity.javaport.Cable(tileentity.TileEntityTypes.CABLE)
 
   // ----------------------------------------------------------------------- //
 
   override def setPlacedBy(world: World, pos: BlockPos, state: BlockState, placer: LivingEntity, stack: ItemStack): Unit = {
     super.setPlacedBy(world, pos, state, placer, stack)
     world.getBlockEntity(pos) match {
-      case tileEntity: tileentity.Cable => {
+      case tileEntity: tileentity.javaport.Cable => {
         tileEntity.fromItemStack(stack)
         state.updateNeighbourShapes(world, pos, 2)
       }

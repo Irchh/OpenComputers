@@ -9,6 +9,7 @@ import li.cil.oc.common._
 import li.cil.oc.common.nanomachines.ControllerImpl
 import li.cil.oc.common.tileentity.Waypoint
 import li.cil.oc.common.tileentity.traits._
+import li.cil.oc.common.tileentity._
 import li.cil.oc.util.BlockPosition
 import li.cil.oc.util.PackedColor
 import net.minecraft.entity.player.PlayerEntity
@@ -80,6 +81,15 @@ object PacketSender {
     pb.writeInt(t.getColor)
 
     pb.sendToPlayersNearTileEntity(t)
+  }
+
+  def sendColorChange(t: javaport.traits.Colored) {
+    val pb = new SimplePacketBuilder(PacketType.ColorChange)
+
+    pb.writeTileEntity(t.te())
+    pb.writeInt(t.getColor)
+
+    pb.sendToPlayersNearTileEntity(t.te())
   }
 
   def sendComputerState(t: Computer) {

@@ -30,7 +30,7 @@ object CableModel extends SmartBlockModelBase {
 
   override def getQuads(state: BlockState, side: Direction, rand: util.Random, data: IModelData): util.List[BakedQuad] = {
     data match {
-      case cable: tileentity.Cable if side == null =>
+      case cable: tileentity.javaport.Cable if side == null =>
         val color = cable.getColor
         val faces = mutable.ArrayBuffer.empty[BakedQuad]
 
